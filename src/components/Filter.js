@@ -4,12 +4,12 @@ import { nanoid } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 
 const Filter = () => {
+	
 	// variables declaration-------
 
 	const data = useSelector((store) => store.dataSlice.data);
 	const [groupName, setGroupName] = useState("Priority");
 	const [OrderingBy, SetOrderingBy] = useState("Priority");
-
 	const [groupByData, setGroupByData] = useState();
 
 	// sort data function--------
@@ -64,9 +64,13 @@ const Filter = () => {
 		groupByhandler();
 		// console.log("groupName", groupName);
 		// console.log("groupByData", groupByData);
-	}, [groupName, OrderingBy]);
+	}, [groupName, OrderingBy, data]);
+	
+	
+
 
 	// return call------
+
 
 	return (
 		<div className="">
@@ -98,8 +102,9 @@ const Filter = () => {
 							SetOrderingBy(event.target.value);
 						}}
 					>
-						<option value="Priority">Priority</option>
+						<option value="Priority">Less Priority</option>
 						<option value="Title">Title</option>
+						<option value="latest">latest</option>
 					</select>
 				</form>
 
